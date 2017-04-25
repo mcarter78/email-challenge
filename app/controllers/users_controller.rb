@@ -29,7 +29,7 @@ class UsersController < BaseController
   end
 
   def edit
-    @user = User.find(params[:email])
+    @user = User.find(params[:id])
   end
 
   def update
@@ -61,7 +61,9 @@ class UsersController < BaseController
   end
 
   def destroy
-
+    user = User.find(params[:id])
+    user.destroy
+    respond_with user, json: user
   end
 
   private
