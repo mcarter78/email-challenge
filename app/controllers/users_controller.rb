@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def create
-    User.create(user_params)
+    # validate that new email does not already exist
+    user = User.find(params[:email])
+    if user !== nil
+      # error
+    else
+      User.create(user_params)
+    end
   end
 
   def edit
@@ -8,7 +14,9 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    # validate that updated email does not already exist
+    
+    # validate that token in params matches a nonce tied to current user email
   end
 
   def destroy
