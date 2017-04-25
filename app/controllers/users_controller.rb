@@ -22,14 +22,14 @@ class UsersController < BaseController
       new_user = User.create(user_params)
       respond_with new_user, json: new_user
     else
-      # TODO: THIS NEEDS TO BE FIXED, RETURNS "Unexpected 'e'"
-      error_msg = String.new('error')
+      error_msg = ['error']
       respond_with error_msg, json: error_msg
     end
   end
 
   def edit
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
+    respond_with user, json: user
   end
 
   def update
@@ -49,15 +49,15 @@ class UsersController < BaseController
 
     if matches == 0
       user = User.find(params[:id])
+      # TODO: validate that token in params matches a nonce tied to current user email
+
       user.update_attributes(user_params)
       respond_with user, json: user
     else
-      # TODO: THIS NEEDS TO BE FIXED, RETURNS "Unexpected 'e'"
-      error_msg = String.new('error')
+      error_msg = ['error']
       respond_with error_msg, json: error_msg
     end
 
-    # validate that token in params matches a nonce tied to current user email
   end
 
   def destroy
@@ -69,6 +69,6 @@ class UsersController < BaseController
   private
 
   def user_params
-    params.permit(:name, :email)
+    params.permit(:name, :email, :marketing, :articles, :digest)
   end
 end
