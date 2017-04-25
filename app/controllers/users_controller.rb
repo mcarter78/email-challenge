@@ -3,6 +3,16 @@ class UsersController < BaseController
     respond_with User.all
   end
 
+  def show
+    user = User.find(params[:id])
+    token = Token.generate user
+    response = {
+      user: user,
+      token: token
+    }
+    respond_with response, json: response
+  end
+
   def create
     # VALIDATE THAT THE EMAIL SUBMITTED DOES NOT ALREADY EXIST IN DB
     # User.find will throw an error if it does not find the requested record,
