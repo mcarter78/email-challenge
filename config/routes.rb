@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  post '/login', to: 'users#login'
-  get '/users', to: 'users#index'
-  post '/users', to: 'users#create'
-  get '/users/:id', to: 'users#show'
-  put '/users/:id', to: 'users#update'
-  delete '/users/:id', to: 'users#destroy'
+  post '/api/login', to: 'users#login'
+  get '/api/users', to: 'users#index'
+  post '/api/users', to: 'users#create'
+  get '/api/users/:id', to: 'users#show'
+  put '/api/users/:id', to: 'users#update'
+  delete '/api/users/:id', to: 'users#destroy'
 end
