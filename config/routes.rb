@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/login', to: 'users#login'
   get '/users', to: 'users#index'
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show'

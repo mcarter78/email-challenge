@@ -1,4 +1,20 @@
 class UsersController < BaseController
+  def login
+    puts params[:email]
+    # Find the user by the email in client form
+    user = User.find_by(email: params[:email])
+    puts user
+    # If user is found
+    if user != nil
+      # Send JSON object with user info
+      respond_with user, json: user
+    else
+      # If user is not found, send error response
+      error_msg = ['Error: Invalid email!']
+      respond_with error_msg, json: error_msg
+    end
+  end
+
   def index
     # Send JSON object with all users
     respond_with User.all
