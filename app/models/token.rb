@@ -3,7 +3,7 @@ class Token < ActiveRecord::Base
     # Convert the given id integer to a string
     id = user[:id].to_s
     # Concatenate the id and a random number, joined with an underscore
-    nonce = id + "_" + SecureRandom.base64
+    nonce = id + "_" + SecureRandom.urlsafe_base64
     # Build a new token object
     token = {
       nonce: nonce,
