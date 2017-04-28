@@ -83,8 +83,11 @@ class UsersController < BaseController
         consumed = Token.consume params[:token], current_user[:id]
         # If Token consume was successful
         if consumed != nil
-          # Re-assign the email param using the new email -- I DIDN'T THINK THIS WOULD WORK
-          params[:email] = params[:new_email]
+          # If an email change was submitted
+          if params[:new_email] != ""
+            # Re-assign the email param using the new email -- I DIDN'T THINK THIS WOULD WORK
+            params[:email] = params[:new_email]
+          end
           # Make the requested changes to the user record
           user.update_attributes(user_params)
           # Send JSON object with updated users info
