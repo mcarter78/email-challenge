@@ -23,23 +23,8 @@ class UsersController < BaseController
   def show
     # Find the user by id in url params
     user = User.find(params[:id])
-    # Check for existing tokens belonging to that user
-    tokens = Token.find_by(user_id: user[:id])
-    # If there are tokens for that user
-    if tokens != nil
-      # Use the first token
-      token = tokens
-    else
-      # If not, use Token's generate method to create a new token for the user
-      token = Token.generate user
-    end
-    # Build an object to respond with
-    response = {
-      user: user,
-      token: token
-    }
-    # Send JSON object with user & token info back
-    respond_with response, json: response
+    # Send JSON object with user info
+    respond_with user, json: user
   end
 
   def create
@@ -63,8 +48,23 @@ class UsersController < BaseController
   def edit
     # Find the user by id in url params
     user = User.find(params[:id])
-    # Send JSON object with user info
-    respond_with user, json: user
+    # Check for existing tokens belonging to that user
+    tokens = Token.find_by(user_id: user[:id])
+    # If there are tokens for that user
+    if tokens != nil
+      # Use the first token
+      token = tokens
+    else
+      # If not, use Token's generate method to create a new token for the user
+      token = Token.generate user
+    end
+    # Build an object to respond with
+    response = {
+      user: user,
+      token: token
+    }
+    # Send JSON object with user & token info back
+    respond_with response, json: response
   end
 
   def update
