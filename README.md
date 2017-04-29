@@ -2,11 +2,11 @@
 
 A working demo of this app can be found at:
 
-[link](https://mighty-tor-53408.herokuapp.com/ "https://mighty-tor-53408.herokuapp.com/")
+[https://mighty-tor-53408.herokuapp.com/]
 
 This repo contains the Ruby on Rails backend, plus the production build of the React frontend in the `/public` folder.  The source code for the React frontend can be found at:
 
-[link](https://github.com/mcarter78/email-challenge-client/ "https://github.com/mcarter78/email-challenge-client")
+[https://github.com/mcarter78/email-challenge-client/]
 
 To install the application locally, clone the repo and run `rake db:create`, `rake db:migrate`
 , and `rake db:seed`.  Start up the application with `rails s`.
