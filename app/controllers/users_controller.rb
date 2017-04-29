@@ -94,7 +94,7 @@ class UsersController < BaseController
           respond_with user, json: user
         else
           # If Token consume was unsucessful, send error message
-          error_msg = ['Error: Incorrect Token!']
+          error_msg = ['Error: Invalid Token!']
           respond_with error_msg, json: error_msg
         end
       else
